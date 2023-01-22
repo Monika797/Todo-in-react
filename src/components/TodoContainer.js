@@ -38,12 +38,13 @@ function TodoContainer() {
   //add a new todo in todolist on click on add todo button in form
   async function handleAddTodo(e, title) {
     e.preventDefault();
-    let newid = Date.now().toString();
-    // console.log(newid);
+    let newid = Date.now();
     const data = await addTodo(title, newid);
-    console.log(data);
+
     if (data.success) {
-      setTodoList([data.data, ...todoList]);
+      const newTodo = { ...data.data, id: newid };
+      // console.log(newTodo);
+      setTodoList([newTodo, ...todoList]);
       toast.success("Todo added successfully");
 
       setInput("");

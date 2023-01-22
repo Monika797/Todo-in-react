@@ -27,6 +27,7 @@ export const addTodo = async function (title, id) {
       body: JSON.stringify({
         title,
         id,
+        userId: 1,
         completed: false,
       }),
       headers: {
